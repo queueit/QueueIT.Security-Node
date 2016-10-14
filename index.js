@@ -1,36 +1,39 @@
 var express = require('express');
+var cookieParser = require('cookie-parser')
 var cons = require('consolidate');
 var queueit = require('./lib/queueit.js');
 
 var options = {
   customerId: "ticketania", // Customer id
-  eventId: "link", // Event id
-  defaultKnownUserSecretKey: "a774b1e2-8da7-4d51-b1a9-7647147bb13bace77210-a488-4b6f-afc9-8ba94551a7d7" // Secret key from queue-it account
+  eventId: "simple", // Event id
+  defaultKnownUserSecretKey: "a774b1e2-8da7-4d51-b1a9-7647147bb13bace77210-a488-4b6f-afc9-8ba94551a7d7", // Secret key from queue-it account
+  cookieDomain: "localhost",
 };
 var queue = queueit(options);
 
 var app = express();
+app.use(cookieParser('your secret here'));
 app.engine('html', cons.mustache);
 app.set('view engine', 'html');
 
 // This is the page in which you redirect the user to the queue
 app.get('/', function (req, res)
 {
-  var queueUrl = queue.getQueueUrl(req, res, '/link/target');
-  return res.render('link', {
-    queueUrl: queueUrl,
+  return res.render('index', {
+    protectedPage: '/purchase'
   });
 });
 
 // This is the protected target url.
-app.get('/link/target', function (req, res)
+app.get('/purchase', function (req, res)
 {
-  queue.validate(req, function (err) {
+  queue.validate(req, res, function (err) {
     if (err)
     {
-      return res.status(403).send('Forbidden');
+      var queueUrl = queue.getQueueUrl(req, res, '/purchase');
+      return res.redirect(queueUrl);
     }
-    return res.render('linktarget');
+    return res.render('purchase');
   })
 });
 

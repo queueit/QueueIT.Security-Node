@@ -1,6 +1,6 @@
 {
   "name": "queueit-knownuser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "LGPL",
   "dependencies": {
     "consolidate": "^0.14.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "mustache": "^2.2.1"
   }
