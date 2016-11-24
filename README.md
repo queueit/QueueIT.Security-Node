@@ -9,6 +9,12 @@ In order to use the code, please follow below steps:
 
 ## Requirements
 
+### Compatibility
+
+See `package.json` for which versions of `express` and `cookie-parser` the library has been tested with.
+
+### Cookie middleware
+
 You need to install cookie middleware in order for the library to work. The example uses [`cookie-parser`](https://www.npmjs.com/package/cookie-parser).
 
 If you are using different cookie middleware, you might want to override the method to get a cookie. 
