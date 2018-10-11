@@ -4,9 +4,9 @@ var cons = require('consolidate');
 var queueit = require('./lib/queueit.js');
 
 var options = {
-  customerId: "ticketania", // Customer id
-  eventId: "simple", // Event id
-  defaultKnownUserSecretKey: "a774b1e2-8da7-4d51-b1a9-7647147bb13bace77210-a488-4b6f-afc9-8ba94551a7d7", // Secret key from queue-it account
+  customerId: "{YOUR CUSTOMER ID}",
+  eventId: "{YOUR EVENT ID}",
+  defaultKnownUserSecretKey: "{YOUR CUSTOMER SECRET KEY}",
   cookieDomain: "localhost",
   queryStringPrefix: "", // Optional
   cookieExpiration: 1200000, // Optional. The amount of time in milliseconds the user can stay on the website before sent to the queue. The time will be extended each time validation is performed. Defaults to 20 minutes.
