@@ -1,3 +1,6 @@
+Please note this repository is deprecated. Replacement is found [here](https://github.com/queueit/KnownUser.V3.Javascript).
+-
+
 # QueueIT.Security-Node
 
 Queue-it KnownUser integration in Node.js
